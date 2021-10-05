@@ -19,24 +19,28 @@
 */
 
 function binarySearch(array, target) {
-    return search(array, target, 0, array.length - 1);
+  return search(array, target, 0, array.length - 1);
 }
 
 function search(array, target, left, right) {
-    if (left > right) {
-        return -1;
-    }
+  if (left > right) {
+    return -1;
+  }
 
-    let midPoint = Math.floor((left + right) / 2);
-    let midValue = array[midPoint];
+  const midIndex = Math.floor((left + right) / 2);
+  const midValue = array[midIndex];
 
-    if (midValue === target) {
-        return midPoint;
-    }
+  if (midValue === target) {
+    return midIndex;
+  }
 
-    if (midValue > target) {
-        search(array, target, left, right - 1);
-    } else {
-        search(array, target, left + 1, right);
-    }
+  if (target < midValue) {
+    return search(array, target, left, midIndex - 1);
+  }
+
+  if (target > midValue) {
+    return search(array, target, midIndex + 1, right);
+  }
+
+  return -1;
 }
