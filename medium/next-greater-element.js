@@ -25,3 +25,31 @@ var nextGreaterElements = function (nums) {
 
   return output;
 };
+
+
+/*
+  Space O(n)
+  Time O(n)
+  Notes: Use a stack to hold the index of elements that we have already passed in our loop. At each iteration check if the top value on
+  the stack is less than the current iteration value. If so, pop that last index on the stack and set the current iteration value to index popped from
+  the stack. A tricky bit is the circular component of the question. We need to use a modulo operator operator after we pass the original size of the array in
+  the iteration to get back to the beggining of the values.
+*/
+
+// function nextGreaterElement(array) {
+// 	let output = Array(array.length).fill(-1);
+// 	const stack = [];
+	
+// 	for (let i = 0; i < array.length * 2; i++) {
+// 		let index = i % array.length; 
+		
+// 		while (stack.length && array[stack[stack.length - 1]] < array[index]) {
+// 			let top = stack.pop();
+// 			output[top] = array[index];
+// 		}
+		
+// 		stack.push(index);
+// 	}
+	
+// 	return output;
+// }
